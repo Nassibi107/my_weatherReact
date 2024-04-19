@@ -5,8 +5,11 @@ import DefaultWeather from "../Svgs/DefaultWeather";
 import Thermometer from "../Svgs/Thermometer";
 import Time from "../Svgs/Time";
 import Wind from "../Svgs/Wind";
+import { useSelector } from 'react-redux';
 
 export const Weather = () => {
+    const weather = useSelector(({weather}) =>  (weather))
+    console.log(weather);
     return (
         <>
             <Card className={styles.container}>

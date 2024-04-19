@@ -4,15 +4,19 @@ import {SearchBar} from "./components/SearchBar/SearchBar";
 import {Wallpaper} from "./components/Wallpaper/Wallpaper";
 import {Weather} from "./components/Weather/Weather";
 import {Container} from "react-bootstrap";
+import { Provider } from 'react-redux';
+import { Store } from './app/Store/Store';
 
 function App() {
     return (
         <div className="App">
+           <Provider store={Store}>
             <Wallpaper/>
-            <Container>
-                <SearchBar/>
-                <Weather/>
-            </Container>
+                <Container>
+                    <SearchBar/>
+                    <Weather/>
+                </Container>
+           </Provider>
         </div>
     );
 }
