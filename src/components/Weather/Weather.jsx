@@ -8,8 +8,33 @@ import Wind from "../Svgs/Wind";
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
+import Sunny from "../Svgs/Sunny";
+import Cloudy from "../Svgs/Cloudy";
+import Rainy from "../Svgs/Rainy";
 export const Weather = () => {
     const weather = useSelector(({weather}) =>  (weather))
+        const displayIcon = () => {
+
+            const defaultWidth = '200px';
+            const defaultHeight = '200px';
+            const {icon} = weather.weather[0]
+            console.log(icon)
+            switch (icon) {
+                case '01d':
+                    return <Sunny width={defaultWidth} height={defaultHeight}/>
+                case '03d':
+                    return <Sunny width={defaultWidth} height={defaultHeight}/>
+                case '04d':
+                    return <Cloudy width={defaultWidth} height={defaultHeight}/>
+                case '10d':
+                    return <Rainy width={defaultWidth} height={defaultHeight}/>
+                case '11d':
+                    return <Thermometer width={defaultWidth} height={defaultHeight}/>
+                default:
+                    return <img src={`https://openweathermap.org/img/wn/${weather.weather.icon}@2x.png`} alt=""/>
+            }
+
+ }
     console.log(weather);
     return (
         <>
@@ -26,7 +51,7 @@ export const Weather = () => {
                     </Card.Title>
                     <Card.Text as={'div'} className={styles.weather_infos}>
                         <div>
-                            <DefaultWeather width={'250px'} height={'250px'}/>
+                                {displayIcon()}
                         </div>
                         <div className={styles.temperature}>
                             <div>{weather.main.temp}</div>
