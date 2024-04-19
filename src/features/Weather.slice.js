@@ -3,11 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initailSatates  = {
    clouds : undefined,
-    main: undefined,
+    main: {
+      temp : undefined
+    },
     name: undefined,
-    sys: undefined,
+    sys: {
+      country : undefined,
+      sunrise : undefined
+    },
     weather: undefined,
-    wind: undefined
+    wind: {
+      speed : undefined
+    }
 };
 
 export const WeatherSlice = createSlice ({

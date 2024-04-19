@@ -8,6 +8,7 @@ import { setWhdata } from "../../features/Weather.slice";
 export const SearchBar = () => {
 
     const [cityApi, setcityApi] = useState([]);
+    const [units, setUnits] = useState('metric');
     const dispatch = useDispatch();
     const GEO_API_KEY = process.env.REACT_APP_GEO_API_KEY
     const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API
@@ -25,7 +26,7 @@ export const SearchBar = () => {
     {
         const {lat,lon} = value
 
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&units=${units}&lon=${lon}&appid=${WEATHER_API_KEY}`)
             .then(response => response.json())
             .then(json => {
                  const {clouds, main, name, sys, weather, wind} = json
